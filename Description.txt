@@ -1,0 +1,46 @@
+Able to retrieve the username and their masked mobilenumbers registered in google pay (Tez - Android version, Phone  Model : Samsung Galaxy J8 (SM-J910G), Android version : 9, Google Pay version : 60.0.001_RC03(armeabi-v7a) )
+
+
+Steps to replicate the case in Android mobile devices: 
+
+1. Open the Java file (Gdrive : https://drive.google.com/drive/folders/1cTLH5mGst723rJWDLYi31EwDJZpzIsPn?usp=sharing  JavaFile : CreateBulkContacts.java) and run the Java clsss based on the Mobile number series. 
+2. Once the Java file is executed, it will create *.vcf file.
+3. Load the data to the mobile device and import the contacts (Time may take 2-3 mins to load 10,000 contacts depending on the mobile device processor & RAM configurations)
+4. Once the import of contacts are successfull, you can see the contacts in the name of "XXXXX" in the mobile contacts.
+5. Open Google Pay (Tez) app
+6. Once the dashboard screen is opened,Click on invite in the section "Invite your friends".
+7. Once the "invite" link is clicked the request will go to google Pay server and match the records with the mobile numbers. If found in Google pay database, then the registered name and their registered mobile numbers wil be displayed. 
+	7.1 This screen will be rendered only when all the contacts are searched in Google pay server.
+	7.2 The request takes contacts from the abdroid device (say 100 at a time) on one single "invite click", the matched data from the Google pay database is loaded to the cache memory.
+	7.3 To ensure the request is loading in mobile app, you can verify the data, click on "New payment" button. Give the search String as "1234" (Which is a last 4 digit).  The cache memory is loaded in the screen upon the data received from Google pay server. If the mobile number is present the google pay database, the respective name will be shown in the list Eg., Name - Foo & MobileNumber - +91 9000001234. If not present, the local contact name saved as "XXXXX" along with the repective mobile number will shown with "invite" option.
+	7.4 If the local contacts has 10000 count, the request will go batch by batch it may take 3-4 hours to reader the page in "invite" page.
+8. Once all the contacts are loaded, you can view all the registered name and their mobile numbers (Without masked even though privacy option - Discoverablity is disabled) corresponding to the contacts saved in android mobile.
+
+
+Disadvantages :
+1. Due to this, anyone can find their mobile number and the name with the emailid.
+2. At one point of time if an attacher wants to know the mobile number of a person it can be retrived and it can be in one of the series like starts with 9 ends with 1234 or the same for 8 and 7 series.
+3. It's a data breach where anyone can steal the data and export as screenshot.
+4. It may also retrived all the data from the series of numbers from 9000000000 to 9999999999 of 9 series and so for 8,7,6 mobile number series using automation where we can read the labels of name and mobile numbers and export in any format like excel,csv, txt etc. or any file sytems.
+5. There are no search limit restricitions in sync of contacts with google pay database. 
+
+Screenshots are attached in : https://drive.google.com/drive/folders/1cTLH5mGst723rJWDLYi31EwDJZpzIsPn?usp=sharing
+Browser/OS: Android OS version : 9
+
+
+
+
+
+If an emailId registered in google pay and if known to someone else (May be my friend or peers) eg: xxxxyyy@gmail.com, his name is shown along with masked phone number (Yes ofcourse, it will be masked only if privacy option - Discoverablity is disabled).
+Eg : If an email is searched as "xxxxyyy@gmail.com" name will be shown as  "xxxxyyy"; number will be masked as "+91 ******1234" 
+So the possiblity of mobile numbers can be in the below series.
+
+Series 1 : From "+91 9000001234" to "+91 9999991234"
+Series 2 : From "+91 8000001234" to "+91 8999991234"
+Series 3 : From "+91 7000001234" to "+91 7999991234"
+
+So if I create a bulk contact of name as "XXXXX" in my Mobile for each series Google pay searches the contact information and finds who are in google pay and remaining set of contacts will show as "Invite" options.
+Now google pay will show the registered username and registerd mobile number in my list (without masked)
+By this way the user related information and their mobile numbers can be retrieved from the google pay database easily.
+
+Note : Bulk contacts can be created with a sample program of above mentioned series in *.vcf format. Depends on the processor and RAM configuration of mobile device, searching of contacts will be depends on it
